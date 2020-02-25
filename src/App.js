@@ -29,12 +29,12 @@ class App extends Component {
   handleSubmit =  (state,e) => {
     e.preventDefault()
 
-    // let newHero = {name:state.heroeName}
+    let newHero = {name:state.heroeName}
     
-    //  this.setState( {  // Sets the state to current file
-    //   heroeName: newHero,
-    //   stateLifted: true
-    // })
+     this.setState( {  // Sets the state to current file
+      heroeName: newHero,
+      stateLifted: true
+    })
 
     console.log("Called Handle Submit", this.state)
   }
@@ -45,9 +45,9 @@ class App extends Component {
       <div className="App">
         <Switch>
           <Route exact path="/Heroes/:Name" 
-            render={(props) => <Heroes appState={this.state}              {...props} />} />
+            render={(props) => <Heroes appState     ={this.state}           {...props} />} />
           <Route exact path="/"             
-            render={(props) => <Home   handleSubmit={this.handleSubmit}   {...props} />} />
+            render={(props) => <Home   handleSubmit ={this.handleSubmit}    {...props} />} />
         </Switch>
 
       </div>
