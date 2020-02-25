@@ -44,33 +44,43 @@ const Heroes = (props) => {
     }, []);
 
     function getComicApiCall(MarvelHeroID){
-        console.log(MarvelHeroID)
-       
+        // console.log(MarvelHeroID)
         const ComicApiCall = `https://gateway.marvel.com:443/v1/public/characters/${MarvelHeroID}/comics?&ts=${marvelTs}&apikey=${marvelPublic}&hash=${encryption(marvelTs + marvelPrivate + marvelPublic)}`
-
+        // Filter Data here to find what actually has a thumbnail and a Descriptioni/Title
         axios.get(ComicApiCall).then(result => {
-            SetComics([result.data.data])
+            SetComics([...Comics,result.data.data])
             console.log("Comics API Request Result", result)
             
         })
             .catch(() => console.log("Can’t access " + ComicApiCall))
 
     }
-    // console.log("Logging Heroes", Heroes[0] , MarvelHeroes[0] )
     
+    console.log(Heroes)
+    if (Heroes[0] !== undefined && !Heroes[0].error){
+        return (
+            <React.Fragment>
+                <CurrentHero Heroes={Heroes} MarvelHeroes = {MarvelHeroes} Comics={Comics} {...props}/>
+            </React.Fragment>
+    
+        )
 
-    return (
+    } else if(Heroes[0] !== undefined && Heroes[0].error){
+        return (
         <React.Fragment>
-
-            {Heroes[0] && 
-            <CurrentHero Heroes={Heroes} MarvelHeroes = {MarvelHeroes} Comics={Comics}/>
-            }
+            {Heroes[0].error}
         </React.Fragment>
+        )
+    } else{
+        return (
+            <React.Fragment>
+                <p style={{color:"white"}}>Loading... </p>
+            </React.Fragment>
+    
+        )
 
-    )
-
-
-
+    }
+    
 };
 
 export default Heroes;

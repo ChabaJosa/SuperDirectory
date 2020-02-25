@@ -1,9 +1,8 @@
 .App {
   text-align: center;
   height: auto;
-  /* height: 100vh */
+  min-height: 100vh;
   background-color: white;
-  /* background-size: 100vh; */
   background-image: 
     linear-gradient(
       rgba(0, 0, 0, 0.5),
@@ -16,3 +15,23 @@
   text-shadow: 2px 2px black;
   text-decoration-color: black;
 }
+
+#CurrentHeroForm {
+  position: fixed;
+  top:20px;
+  right:20px;
+  z-index: 1;
+}
+/* #userDropdown{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+nav img{
+  width: 20vw;
+  height: 20vw;
+}
+
+nav{
+  text-align: center;
+} */

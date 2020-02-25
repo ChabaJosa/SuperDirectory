@@ -1,6 +1,23 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class currentHero extends Component {
+
+    state = {}
+
+    addHeroeProperty = (e) => {
+
+        let key = e.target.name
+        let value = e.target.value
+        this.setState({ [key]: value }) // Matches the name="something" with the e.target.name
+        console.log(key, value)
+    }   // This is already in the Home component, which means it can be passed down as a prop
+
+    getAllTheComics = () => {
+        // This should filter through the list of comics to see which have images
+    }
+
+
     render() {
         return (
             <div>
@@ -18,51 +35,64 @@ class currentHero extends Component {
                                         {/* Nav Item - User Information */}
                                         <li className="nav-item dropdown no-arrow">
                                             <div className="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="560" />
+                                                <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="560vh" />
                                                 <span className="ml-5 display-1" style={{ color: "white" }}>{this.props.Heroes[0].results[0].name}</span>
                                             </div>
                                         </li>
                                     </ul>
                                     {/* Topbar Search */}
-                                    <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                    {/* <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search"> */}
+                                    <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}> 
                                         <div className="input-group">
-                                            <input type="text" className="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
+                                            <input onChange={this.addHeroeProperty} className="form-control ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
-                                                <button className="btn btn-primary" type="button">
-                                                    <i className="fas fa-search fa-sm" />
-                                                </button>
+                                                <button onClick={() => {this.props.history.push(this.state.heroeName); window.location.reload();} } className="btn btn-light" type="submit" style={{ background: "transparent", color: "white" }} >+</button>
                                             </div>
+
                                         </div>
                                     </form>
                                 </nav>
                                 {/* End of Topbar */}
+
+
                                 {/* Begin Page Content */}
                                 <div className="container-fluid">
-                                    {/* Page Heading */}
-                                    <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                                        <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                                        <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i className="fas fa-download fa-sm text-white-50" /> Download PDF</a>
-                                    </div>
 
-
-
-
-                                    {this.props.MarvelHeroes[0] && this.props.MarvelHeroes[0].results[0] &&
+                                    {this.props.MarvelHeroes[0] && this.props.MarvelHeroes[0].results[0] && this.props.Comics[0] && this.props.Comics[0].results[0] &&
 
                                         <React.Fragment>
-                                            {/* <div className="row">
+                                            {/* Comic Images */}
+                                            <div className="row d-flex m-4 justify-content-around">
 
-                                                <div className="card col-md-4">
-                                                    <img className="card-img-top" src="https://i.annihil.us/u/prod/marvel/images/OpenGraph-TW-1200x630.jpg" />
-                                                    
+                                                <div className="card" style={{ width: "18rem" }}>
+                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[1].thumbnail.path}.${this.props.Comics[0].results[1].thumbnail.extension}`} alt="Card image cap" />
+                                                    <div className="card-body d-flex align-items-center">
+                                                        <p className="card-text">{this.props.Comics[0].results[1].title}</p>
+                                                    </div>
                                                 </div>
 
+                                                <div className="card" style={{ width: "18rem" }}>
+                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[2].thumbnail.path}.${this.props.Comics[0].results[2].thumbnail.extension}`} alt="Card image cap" />
+                                                    <div className="card-body d-flex align-items-center">
+                                                        <p className="card-text">{this.props.Comics[0].results[2].title}</p>
+                                                    </div>
+                                                </div>
 
-                                            </div> */}
+                                                <div className="card" style={{ width: "18rem" }}>
+                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[3].thumbnail.path}.${this.props.Comics[0].results[3].thumbnail.extension}`} alt="Card image cap" />
+                                                    <div className="card-body d-flex align-items-center">
+                                                        <p className="card-text">{this.props.Comics[0].results[3].title}</p>
+                                                    </div>
+                                                </div>
 
+                                                <div className="card" style={{ width: "18rem" }}>
+                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[4].thumbnail.path}.${this.props.Comics[0].results[4].thumbnail.extension}`} alt="Card image cap" />
+                                                    <div className="card-body d-flex align-items-center">
+                                                        <p className="card-text">{this.props.Comics[0].results[4].title}</p>
+                                                    </div>
+                                                </div>
 
-
-
+                                            </div>
 
 
                                             {/* Content Row */}
@@ -76,6 +106,7 @@ class currentHero extends Component {
                                                     </div>
                                                 </div>
                                             </div>
+
                                             {/* Content Row */}
                                             <div className="row">
                                                 {/* Comics */}
