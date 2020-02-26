@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Player from "../YouTube/Player"
 
 class currentHero extends Component {
 
@@ -13,9 +13,31 @@ class currentHero extends Component {
         console.log(key, value)
     }   // This is already in the Home component, which means it can be passed down as a prop
 
-    getAllTheComics = () => {
-        // This should filter through the list of comics to see which have images
+    getAllTheComics = (comicProps) => { // The parameter should take --> this.props.Comics[0].results
+
+        let comicsWithImages = comicProps.filter(everyResult => {
+            return everyResult.thumbnail.path !== "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+
+        })
+
+        console.log(comicsWithImages) //All Good Unitl here
+        return (
+            comicsWithImages.map(everyComic => {
+
+                return (
+                    <div className="card mb-3" style={{ width: "18rem" }}>
+                        <img className="card-img-top" src={`${everyComic.thumbnail.path}.${everyComic.thumbnail.extension}`} alt="Card image cap" />
+                        <div className="card-body d-flex align-items-center">
+                            <p className="card-text">{everyComic.title}</p>
+                        </div>
+                    </div>
+                )
+            })
+
+        
+        )
     }
+    // This should filter through the list of comics to see which have images
 
 
     render() {
@@ -29,7 +51,7 @@ class currentHero extends Component {
                             {/* Main Content */}
                             <div id="content">
                                 {/* Topbar */}
-                                <nav className="navbar navbar-default navbar-static-top">
+                                <nav className="navbar navbar-default navbar-static-top d-flex justify-content-center">
                                     {/* Topbar Navbar */}
                                     <ul className="navbar-nav ml-1">
                                         {/* Nav Item - User Information */}
@@ -42,11 +64,11 @@ class currentHero extends Component {
                                     </ul>
                                     {/* Topbar Search */}
                                     {/* <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search"> */}
-                                    <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}> 
+                                    <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
                                         <div className="input-group">
                                             <input onChange={this.addHeroeProperty} className="form-control ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
-                                                <button onClick={() => {this.props.history.push(this.state.heroeName); window.location.reload();} } className="btn btn-light" type="submit" style={{ background: "transparent", color: "white" }} >+</button>
+                                                <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload(); }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white" }} >+</button>
                                             </div>
 
                                         </div>
@@ -62,41 +84,17 @@ class currentHero extends Component {
 
                                         <React.Fragment>
                                             {/* Comic Images */}
+                                            {console.log("Logging this.props.Comics", this.props.Comics)}
                                             <div className="row d-flex m-4 justify-content-around">
 
-                                                <div className="card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[1].thumbnail.path}.${this.props.Comics[0].results[1].thumbnail.extension}`} alt="Card image cap" />
-                                                    <div className="card-body d-flex align-items-center">
-                                                        <p className="card-text">{this.props.Comics[0].results[1].title}</p>
-                                                    </div>
-                                                </div>
+                                                {this.getAllTheComics(this.props.Comics[0].results)}  
 
-                                                <div className="card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[2].thumbnail.path}.${this.props.Comics[0].results[2].thumbnail.extension}`} alt="Card image cap" />
-                                                    <div className="card-body d-flex align-items-center">
-                                                        <p className="card-text">{this.props.Comics[0].results[2].title}</p>
-                                                    </div>
-                                                </div>
-
-                                                <div className="card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[3].thumbnail.path}.${this.props.Comics[0].results[3].thumbnail.extension}`} alt="Card image cap" />
-                                                    <div className="card-body d-flex align-items-center">
-                                                        <p className="card-text">{this.props.Comics[0].results[3].title}</p>
-                                                    </div>
-                                                </div>
-
-                                                <div className="card" style={{ width: "18rem" }}>
-                                                    <img className="card-img-top" src={`${this.props.Comics[0].results[4].thumbnail.path}.${this.props.Comics[0].results[4].thumbnail.extension}`} alt="Card image cap" />
-                                                    <div className="card-body d-flex align-items-center">
-                                                        <p className="card-text">{this.props.Comics[0].results[4].title}</p>
-                                                    </div>
-                                                </div>
-
+                                               
                                             </div>
 
 
                                             {/* Content Row */}
-                                            <div className="row mx-auto ">
+                                            <div className="row mx-auto d-flex justify-content-center">
                                                 <div className="card shadow mb-4">
                                                     <div className="card-header py-3">
                                                         <h6 className="m-0 font-weight-bold text-primary">DESCRIPTION</h6>
@@ -259,6 +257,7 @@ class currentHero extends Component {
                                 {/* /.container-fluid */}
                             </div>
                             {/* End of Main Content */}
+                            <Player {...this.props}/>
                         </div></React.Fragment>}
             </div>
         );
