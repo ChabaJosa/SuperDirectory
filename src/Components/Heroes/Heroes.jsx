@@ -19,8 +19,6 @@ const Heroes = (props) => {
 
     useEffect(() => {
 
-        // console.log(props, 'dsasddsa', props.appState.stateLifted)
-        // if (props.appState){ // Commented out because it is currently not working
         const MarvelApiCall = `https://gateway.marvel.com:443/v1/public/characters?name=${props.match.params.Name}&ts=${marvelTs}&apikey=${marvelPublic}&hash=${encryption(marvelTs + marvelPrivate + marvelPublic)}`
         const SupsApiCall   = `https://www.superheroapi.com/api.php/${supsKey}/search/${props.match.params.Name}`
 
@@ -39,8 +37,6 @@ const Heroes = (props) => {
             .catch(() => console.log("Can’t access " + SupsApiCall))
         console.log(MarvelHeroes)
        
-
-        // } 
     }, []);
 
     function getComicApiCall(MarvelHeroID){
@@ -56,7 +52,6 @@ const Heroes = (props) => {
 
     }
     
-    console.log(Heroes)
     if (Heroes[0] !== undefined && !Heroes[0].error){
         return (
             <React.Fragment>
@@ -69,6 +64,7 @@ const Heroes = (props) => {
         return (
         <React.Fragment>
             {Heroes[0].error}
+            <h1 style={{color:"white"}}>Check your super spelling... </h1>
         </React.Fragment>
         )
     } else{

@@ -34,7 +34,7 @@ class currentHero extends Component {
                 )
             })
 
-        
+
         )
     }
     // This should filter through the list of comics to see which have images
@@ -53,13 +53,13 @@ class currentHero extends Component {
                                 {/* Topbar */}
                                 <nav className="navbar navbar-default navbar-static-top d-flex justify-content-center">
                                     {/* Topbar Navbar */}
-                                    <ul className="navbar-nav ml-1">
+                                    <ul className="navbar-nav m-2">
                                         {/* Nav Item - User Information */}
                                         <li className="nav-item dropdown no-arrow">
-                                            <div className="nav-link dropdown-toggle" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="560vh" />
-                                                <span className="ml-5 display-1" style={{ color: "white" }}>{this.props.Heroes[0].results[0].name}</span>
-                                            </div>
+
+                                            <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="560vh" />
+                                            <span className="ml-5 display-1" style={{ color: "white" }}>{this.props.Heroes[0].results[0].name}</span>
+
                                         </li>
                                     </ul>
                                     {/* Topbar Search */}
@@ -87,9 +87,9 @@ class currentHero extends Component {
                                             {console.log("Logging this.props.Comics", this.props.Comics)}
                                             <div className="row d-flex m-4 justify-content-around">
 
-                                                {this.getAllTheComics(this.props.Comics[0].results)}  
+                                                {this.getAllTheComics(this.props.Comics[0].results)}
 
-                                               
+
                                             </div>
 
 
@@ -257,7 +257,7 @@ class currentHero extends Component {
                                 {/* /.container-fluid */}
                             </div>
                             {/* End of Main Content */}
-                            <Player {...this.props}/>
+                            <Player {...this.props} />
                         </div></React.Fragment>}
             </div>
         );
