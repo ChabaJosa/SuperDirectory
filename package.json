@@ -9,6 +9,8 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "md5": "^2.2.1",
+    "mdbootstrap": "^4.13.0",
+    "mdbreact": "^4.25.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",

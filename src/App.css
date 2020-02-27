@@ -28,6 +28,10 @@ input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
   opacity: 1; /* Firefox */
 }
 
+.ytVideo{
+  height: 1vh;
+}
+
 /* #userDropdown{
   display: flex;
   justify-content: space-evenly;

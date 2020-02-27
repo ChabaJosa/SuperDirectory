@@ -257,8 +257,8 @@ class currentHero extends Component {
                                 {/* /.container-fluid */}
                             </div>
                             {/* End of Main Content */}
-                            <Player {...this.props} />
                         </div></React.Fragment>}
+                            <Player {...this.props} />   {/* This used to be above the React Fragment */}
             </div>
         );
     }
