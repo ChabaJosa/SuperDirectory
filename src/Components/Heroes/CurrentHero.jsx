@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Player from "../YouTube/Player"
 
 class currentHero extends Component {
@@ -26,10 +27,23 @@ class currentHero extends Component {
 
                 return (
                     <div className="card mb-3" style={{ width: "18rem" }}>
-                        <img className="card-img-top" src={`${everyComic.thumbnail.path}.${everyComic.thumbnail.extension}`} alt="Card image cap" />
-                        <div className="card-body d-flex align-items-center">
-                            <p className="card-text">{everyComic.title}</p>
+                        <div className="g-card">
+                            <div className="card-container">
+                                <div className="card-front">
+                                    <img className="card-img-top" src={`${everyComic.thumbnail.path}.${everyComic.thumbnail.extension}`} alt="Card image cap" />
+                                    <div className="card-body d-flex align-items-center justify-content-center">
+                                        <p className="card-text">{everyComic.title}</p>
+                                    </div>
+                                </div>
+                                <div className="card-back">
+                                    <div className="card-body d-flex align-items-center justify-content-center">
+                                        <div className="card-text">{ "More Details:"} <Link to={everyComic.urls ? `../${everyComic.urls[0].url}`: "www.marvel.com" } >Click Here</Link></div>
+                                        <div className="card-text">{ "Want one?:"}    <Link to={everyComic.urls[1] ? `../${everyComic.urls[1].url}`: "www.marvel.com"} >Click Here</Link></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 )
             })
@@ -64,6 +78,7 @@ class currentHero extends Component {
                                     </ul>
                                     {/* Topbar Search */}
                                     {/* <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search"> */}
+                                    
                                     <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
                                         <div className="input-group">
                                             <input onChange={this.addHeroeProperty} className="form-control ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
