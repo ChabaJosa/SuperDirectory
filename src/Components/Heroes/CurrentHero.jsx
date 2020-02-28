@@ -54,7 +54,7 @@ class currentHero extends Component {
     }
 
     getProperHero = () => {
-        let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name === this.props.match.params.Name && eachHero.name.length === this.props.match.params.Name.length })
+        let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name.toLowerCase() === this.props.match.params.Name.toLowerCase() && eachHero.name.length === this.props.match.params.Name.length })
         console.log("Proper Hero ", properHero)
         this.props.Heroes[0].results = properHero 
         console.log("Proper Hero ", this.props.Heroes[0].results[0])
@@ -297,7 +297,7 @@ class currentHero extends Component {
                             {/* End of Main Content */}
                         </div></React.Fragment>}
                             {/* This used to be above the React Fragment */}
-                            <Player {...this.props} />   
+                            {/* <Player {...this.props} />    */}
             </div>
         );
     }
