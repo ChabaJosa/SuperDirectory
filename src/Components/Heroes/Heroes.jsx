@@ -30,7 +30,6 @@ const Heroes = (props) => {
             SetHeroes([...Heroes, result.data])
         })
             .catch(() => console.log("Can’t access " + SupsApiCall))
-        console.log(MarvelHeroes)
        
     }, []);
 

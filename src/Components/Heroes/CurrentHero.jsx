@@ -53,13 +53,21 @@ class currentHero extends Component {
         )
     }
 
+    getProperHero = () => {
+        let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name === this.props.match.params.Name && eachHero.name.length === this.props.match.params.Name.length })
+        console.log("Proper Hero ", properHero)
+        this.props.Heroes[0].results = properHero 
+        console.log("Proper Hero ", this.props.Heroes[0].results[0])
+    }
 
     render() {
         return (
+
             <div>
                 {this.props.Heroes[0] &&
                     <React.Fragment>
                         {/* <div>{this.props.MarvelHeroes[0].results[0].name}</div> */}
+                        {this.getProperHero()}
                         {console.log("Logging this.props.MarvelHeroes", this.props.MarvelHeroes)}
                         <div id="content-wrapper" className="d-flex flex-column">
                             {/* Main Content */}
@@ -248,7 +256,7 @@ class currentHero extends Component {
 
                                                             </tr>                                <tr>
                                                                 <th style={{textAlign: 'left'}} scope="row">First Appearance</th>
-                                                                <td>{this.props.Heroes[0].results[0].biography['first-appearance']}</td>
+                                                                <td >{this.props.Heroes[0].results[0].biography['first-appearance']}</td>
 
                                                             </tr>                                <tr>
                                                                 <th style={{textAlign: 'left'}} scope="row">Publisher</th>
@@ -288,7 +296,8 @@ class currentHero extends Component {
                             </div>
                             {/* End of Main Content */}
                         </div></React.Fragment>}
-                            <Player {...this.props} />   {/* This used to be above the React Fragment */}
+                            {/* This used to be above the React Fragment */}
+                            <Player {...this.props} />   
             </div>
         );
     }
