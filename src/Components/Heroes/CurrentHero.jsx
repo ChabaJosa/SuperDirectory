@@ -299,7 +299,7 @@ class currentHero extends Component {
                             {/* End of Main Content */}
                         </div></React.Fragment>}
                             {/* This used to be above the React Fragment */}
-                            {/* <Player {...this.props} />    */}
+                            <Player {...this.props} />   
             </div>
         );
     }
