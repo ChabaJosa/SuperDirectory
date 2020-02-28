@@ -37,9 +37,11 @@ class currentHero extends Component {
                                 </div>
                                 <div className="card-back">
                                     <div className="backContent">
-                                        <div className="card-text">{ "More Details:"} <Link to={everyComic.urls ? `../${everyComic.urls[0].url}`: "www.marvel.com" } >Click Here</Link></div>
+                                        {/* <div className="card-text">{ "More Details:"} <Link to={everyComic.urls ? `../${everyComic.urls[0].url}`: "www.marvel.com" } >Click Here</Link></div> */}
+                                        <div className="card-text">{ "More Details:"} <a target="_blank" rel="nofollow" href={everyComic.urls ? `${everyComic.urls[0].url}`: "www.marvel.com" }>Click Here</a></div>
                                         <br></br>
-                                        <div className="card-text">{ "Want one?:"}    <Link to={everyComic.urls[1] ? `../${everyComic.urls[1].url}`: "www.marvel.com"} >Click Here</Link></div>
+                                        {/* <div className="card-text">{ "Want one?:"}    <Link to={everyComic.urls[1] ? `../${everyComic.urls[1].url}`: "www.marvel.com"} >Click Here</Link></div> */}
+                                        <div className="card-text">{ "More Details:"} <a target="_blank" rel="nofollow" href={everyComic.urls[1] ? `${everyComic.urls[1].url}`: "www.marvel.com" }>Click Here</a></div>                                    
                                     </div>
                                 </div>
                             </div>
@@ -90,7 +92,7 @@ class currentHero extends Component {
                                         <div className="input-group">
                                             <input onChange={this.addHeroeProperty} className="form-control-bs ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
-                                                <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload(); }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white", border:0 }} >+</button>
+                                                <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload() }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white", border:0 }} >+</button>
                                             </div>
 
                                         </div>
