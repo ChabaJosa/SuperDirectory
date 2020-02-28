@@ -80,9 +80,9 @@ class currentHero extends Component {
                                     {/* <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search"> */}
                                     <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
                                         <div className="input-group">
-                                            <input onChange={this.addHeroeProperty} className="form-control ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
+                                            <input onChange={this.addHeroeProperty} className="form-control-bs ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
-                                                <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload(); }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white" }} >+</button>
+                                                <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload(); }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white", border:0 }} >+</button>
                                             </div>
 
                                         </div>

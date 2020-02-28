@@ -2,13 +2,12 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 import CurrentHero from "./CurrentHero"
+import { Link } from 'react-router-dom';
 
 const Heroes = (props) => {
     const [MarvelHeroes, SetMarvelHeroes] = useState([]);
     const [Heroes, SetHeroes] = useState([]);
     const [Comics,SetComics] = useState([]);
-    // The initial argument above is the name of the state, and the second is the function that 
-    // will be used to alter it
 
     let { supsKey, marvelPublic, marvelPrivate, marvelTs } = props.appState
 
@@ -29,7 +28,6 @@ const Heroes = (props) => {
         axios.get(SupsApiCall).then(result => {
             console.log("Full Sups Result", result)
             SetHeroes([...Heroes, result.data])
-            console.log(Heroes)
         })
             .catch(() => console.log("Can’t access " + SupsApiCall))
         console.log(MarvelHeroes)
@@ -60,8 +58,12 @@ const Heroes = (props) => {
     } else if(Heroes[0] !== undefined && Heroes[0].error){
         return (
         <React.Fragment>
-            {Heroes[0].error}
-            <h1 style={{color:"white"}}>Check your super spelling... </h1>
+            <div className="supsError">
+                <h4 className="HomeText" style={{color:"white"}}><i>{Heroes[0].error}</i></h4>
+                <h1 className="HomeText" style={{color:"white"}}>Check your super spelling... </h1>
+                <br></br>
+                <Link to="/"><button className="btn btn-danger" style={{color:"white"}}>Home</button></Link>
+            </div>
         </React.Fragment>
         )
     } else{

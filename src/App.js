@@ -5,12 +5,6 @@ import Heroes from './Components/Heroes/Heroes';
 import Home from "./Components/Home"
 import { Switch, Route } from 'react-router-dom';
 
-// Logic:
-// On submit of the search button handleSubmit gets called
-// It takes the Home components state as a parameter and passes it to the Heroes.jsx component
-// In there we use the state prop to set Config.js
-// Use Config.js to make the apicalls and display the proper data
-
 class App extends Component {
 
   state={
@@ -27,7 +21,6 @@ class App extends Component {
     
      this.setState( {  // Sets the state to current file
       heroeName: newHero,
-      stateLifted: true
     })
 
     console.log("Called Handle Submit", this.state)

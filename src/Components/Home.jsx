@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 class Home extends Component {
 
-    // state = {
-    //     heroeName: "",
-    //     stateLifted: false
-    // }
+    state = {
+        heroeName: "",
+    }
 
     addHeroeProperty = (e) => {
 
@@ -26,9 +24,9 @@ class Home extends Component {
 
                     <div className="row py-5">
                         <div className="col-lg-9 mx-auto text-white text-center HomeText">
-                            <h1 className="display-4" >Super Directory</h1>
+                            <h1 className="display-1" >Super Directory</h1>
                             <br></br>
-                            <h3 className="lead mb-0">Collection of Superhero Data</h3>
+                            <h3>Collection of Superhero Data</h3>
                         </div>
                     </div>
 
@@ -40,9 +38,9 @@ class Home extends Component {
 
                                 <form onSubmit={(e) => this.props.handleSubmit(this.state, e)}>
                                     <div className="input-group mb-4">
-                                        <input onChange={this.addHeroeProperty} name="heroeName" type="search" placeholder="Cape Crusaders, Web Crawlers, Iron Dudes, we got them all..." aria-describedby="button-addon5" className="form-control " />
+                                        <input onChange={this.addHeroeProperty} className="form-control-bs" name="heroeName" type="search" placeholder="Cape Crusaders, Web Crawlers we got them all..." aria-describedby="button-addon5" />
                                             <div className="input-group-append" onClick={() => this.props.history.push(`Heroes/${this.state.heroeName}`)}>
-                                                <button id="button-addon5" type="submit" className="btn text-white">+</button>
+                                                <button id="button-addon5" type="submit" className="btn">+</button>
                                             </div>
                                     </div>
 
