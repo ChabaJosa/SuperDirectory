@@ -41,7 +41,7 @@ class currentHero extends Component {
                                         <div className="card-text">{ "More Details:"} <a target="_blank" rel="nofollow" href={everyComic.urls ? `${everyComic.urls[0].url}`: "www.marvel.com" }>Click Here</a></div>
                                         <br></br>
                                         {/* <div className="card-text">{ "Want one?:"}    <Link to={everyComic.urls[1] ? `../${everyComic.urls[1].url}`: "www.marvel.com"} >Click Here</Link></div> */}
-                                        <div className="card-text">{ "More Details:"} <a target="_blank" rel="nofollow" href={everyComic.urls[1] ? `${everyComic.urls[1].url}`: "www.marvel.com" }>Click Here</a></div>                                    
+                                        <div className="card-text">{ "Want one?:"} <a target="_blank" rel="nofollow" href={everyComic.urls[1] ? `${everyComic.urls[1].url}`: "www.marvel.com" }>Click Here</a></div>                                    
                                     </div>
                                 </div>
                             </div>
