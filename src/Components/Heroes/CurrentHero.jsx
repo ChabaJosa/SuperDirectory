@@ -114,7 +114,7 @@ class currentHero extends Component {
                                                         <h6 className="m-0 font-weight-bold text-primary">DESCRIPTION</h6>
                                                     </div>
                                                     <div className="card-body">
-                                                        <p className="mb-0">{this.props.MarvelHeroes[0].results[0].description}</p>
+                                                        <p className="mb-0" style={{fontFamily:"monospace", fontSize:"Large"}}>{this.props.MarvelHeroes[0].results[0].description}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -232,7 +232,7 @@ class currentHero extends Component {
                                             {/* Bio */}
                                             <div className="card shadow mb-4">
                                                 <div className="card-header py-3">
-                                                    <h6 className="m-0 font-weight-bold text-primary">Bio</h6>
+                                                    <h6 className="m-0 font-weight-bold text-primary">BIO</h6>
                                                 </div>
                                                 <div className="card-body">
                                                     <table className="table">
@@ -243,8 +243,8 @@ class currentHero extends Component {
 
                                                             </tr>
                                                             <tr>
-                                                                <th style={{textAlign: 'left'}} scope="row">Aliases</th>
-                                                                <td>{this.props.Heroes[0].results[0].biography.aliases}</td>
+                                                                <th style={{textAlign: 'left'}} scope="row">From</th>
+                                                                <td>{this.props.Heroes[0].results[0].biography["place-of-birth"]}</td>
 
                                                             </tr>                                <tr>
                                                                 <th style={{textAlign: 'left'}} scope="row">First Appearance</th>
@@ -271,13 +271,13 @@ class currentHero extends Component {
                                                             </tr>
                                                             <tr>
                                                                 <th style={{textAlign: 'left'}} scope="row">Connections</th>
-                                                                <td>{this.props.Heroes[0].results[0].connections['group-affiliation']}</td>
+                                                                <td>{this.props.Heroes[0].results[0].connections['group-affiliation'].toString()}</td>
 
                                                             </tr>
                                                         </tbody>
                                                     </table>
 
-                                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse more Heroes →</a>
+                                                    <a target="_blank" rel="nofollow" href="https://www.marvel.com/">Browse more Heroes →</a>
                                                 </div>
                                             </div>
                                         </div>
