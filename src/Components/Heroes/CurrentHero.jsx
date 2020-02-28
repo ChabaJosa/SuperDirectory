@@ -26,7 +26,7 @@ class currentHero extends Component {
             comicsWithImages.map(everyComic => {
 
                 return (
-                    <div className="card mb-3" style={{ width: "18rem" }}>
+                    <div className="card mb-3" style={{ width: "18rem", backgroundColor:"transparent" }}>
                         <div className="g-card">
                             <div className="card-container">
                                 <div className="card-front">
@@ -36,8 +36,9 @@ class currentHero extends Component {
                                     </div>
                                 </div>
                                 <div className="card-back">
-                                    <div className="card-body d-flex align-items-center justify-content-center">
+                                    <div className="backContent">
                                         <div className="card-text">{ "More Details:"} <Link to={everyComic.urls ? `../${everyComic.urls[0].url}`: "www.marvel.com" } >Click Here</Link></div>
+                                        <br></br>
                                         <div className="card-text">{ "Want one?:"}    <Link to={everyComic.urls[1] ? `../${everyComic.urls[1].url}`: "www.marvel.com"} >Click Here</Link></div>
                                     </div>
                                 </div>
@@ -51,7 +52,6 @@ class currentHero extends Component {
 
         )
     }
-    // This should filter through the list of comics to see which have images
 
 
     render() {
@@ -78,7 +78,6 @@ class currentHero extends Component {
                                     </ul>
                                     {/* Topbar Search */}
                                     {/* <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search"> */}
-                                    
                                     <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
                                         <div className="input-group">
                                             <input onChange={this.addHeroeProperty} className="form-control ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
@@ -237,26 +236,42 @@ class currentHero extends Component {
                                                 </div>
                                                 <div className="card-body">
                                                     <table className="table">
-
                                                         <tbody>
                                                             <tr>
-                                                                <th scope="row">From</th>
+                                                                <th style={{textAlign: 'left'}} scope="row">Full Name</th>
+                                                                <td>{this.props.Heroes[0].results[0].biography['full-name']}</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th style={{textAlign: 'left'}} scope="row">Aliases</th>
+                                                                <td>{this.props.Heroes[0].results[0].biography.aliases}</td>
+
+                                                            </tr>                                <tr>
+                                                                <th style={{textAlign: 'left'}} scope="row">First Appearance</th>
+                                                                <td>{this.props.Heroes[0].results[0].biography['first-appearance']}</td>
+
+                                                            </tr>                                <tr>
+                                                                <th style={{textAlign: 'left'}} scope="row">Publisher</th>
                                                                 <td>{this.props.Heroes[0].results[0].biography.publisher}</td>
 
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">Appearance</th>
-                                                                <td>{this.props.Heroes[0].results[0].appearance.gender}</td>
+                                                            </tr>                                <tr>
+                                                                <th style={{textAlign: 'left'}} scope="row">Appearance</th>
+                                                                <td>{this.props.Heroes[0].results[0].appearance.race}, {this.props.Heroes[0].results[0].appearance.gender}</td>
 
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Work</th>
+                                                                <th style={{textAlign: 'left'}} scope="row">Size</th>
+                                                                <td>{this.props.Heroes[0].results[0].appearance.height[0]}, {this.props.Heroes[0].results[0].appearance.weight[0]}</td>
+
+                                                            </tr>
+                                                            <tr>
+                                                                <th style={{textAlign: 'left'}} scope="row">Work</th>
                                                                 <td>{this.props.Heroes[0].results[0].work.occupation}</td>
 
                                                             </tr>
                                                             <tr>
-                                                                <th scope="row">Connections</th>
-                                                                <td>{this.props.Heroes[0].results[0].connections.relatives}</td>
+                                                                <th style={{textAlign: 'left'}} scope="row">Connections</th>
+                                                                <td>{this.props.Heroes[0].results[0].connections['group-affiliation']}</td>
 
                                                             </tr>
                                                         </tbody>

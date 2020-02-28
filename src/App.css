@@ -1,8 +1,20 @@
+/* @font-face {
+  font-family: avengeance;
+  src: url("./fonts/avengeance-font/Avengeance-E1zj.otf");
+} */
+
+@font-face {
+  font-family: HeroFont;
+  src: url("./fonts/heroes-assemble/heroesassemble2.ttf");
+}
+
 .App {
   text-align: center;
   height: auto;
   min-height: 100vh;
   background-color: white;
+  font-family: HeroFont;
+  font-variant-alternates: normal;
   background-image: 
     linear-gradient(
       rgba(0, 0, 0, 0.5),
@@ -23,8 +35,14 @@
   z-index: 1;
 }
 
+.backContent{
+  position: absolute;
+  top: 45%;
+  right:20%
+}
+
 .g-card{
-  height: 40rem;
+  height: 35rem;
   perspective: 1000px;
 }
 
@@ -35,7 +53,7 @@
   text-align: center;
   /* background-color: #fff; */
   transform-style: preserve-3d;
-  transition: transform 0.8s;
+  transition: ease-in 0.8s;
 }
 
 .g-card:hover .card-container{
@@ -49,15 +67,27 @@
   color: #fff;
   border-radius: 5px;
   backface-visibility: hidden;
+  overflow: hidden;
 }
 
+
 .card-front{
-  background-color: #aaa;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('./cardFrontBackground.jpg');
 }
 
 
 .card-back{
-  background-color: #888;
+  background-image: 
+    linear-gradient(
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url('./cardBackground.jpg');
   transform: rotateY(180deg);
 }
 

@@ -9,11 +9,8 @@ const Heroes = (props) => {
     const [Comics,SetComics] = useState([]);
     // The initial argument above is the name of the state, and the second is the function that 
     // will be used to alter it
-    // console.log("Current Props",props)
 
-    let { supsKey, marvelPublic, marvelPrivate, marvelTs, heroeName } = props.appState
-    // props.appState.heroeName = (props.match.params.Name) 
-    // Whats above isn't working and it's part on App.js is also commented out
+    let { supsKey, marvelPublic, marvelPrivate, marvelTs } = props.appState
 
     let encryption = require("md5")
 

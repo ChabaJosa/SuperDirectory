@@ -11,10 +11,6 @@ import { Switch, Route } from 'react-router-dom';
 // In there we use the state prop to set Config.js
 // Use Config.js to make the apicalls and display the proper data
 
-// Things to Fix Monday:
-// Lifted state (T/F) not working on heroes component axios if statement
-// Fix Home component height
-
 class App extends Component {
 
   state={
@@ -22,8 +18,6 @@ class App extends Component {
     marvelPublic:"8fc6c25d7b8c17ab22e20964381a9452",
     marvelPrivate:"d6fa3e44c676e9fcc6339f0d4d84a31bf70e71d0",
     marvelTs:1,
-    // heroeName:"",
-    // stateLifted:false
   }
 
   handleSubmit =  (state,e) => {
