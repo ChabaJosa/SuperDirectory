@@ -56,12 +56,13 @@ class currentHero extends Component {
     }
 
     getProperHero = () => {
-        if(this.props.Heroes[0].results){
+        if(this.props.Heroes[0].results["length"]>1){
             let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name.toLowerCase() === this.props.match.params.Name.toLowerCase()})
-            console.log("Proper Hero ", properHero)
-            this.props.Heroes[0].results = properHero 
+            if(properHero["length"]!==0){
+                console.log("Proper Hero ", properHero)
+                this.props.Heroes[0].results = properHero 
+            }
         }
-        // console.log("Proper Hero ", this.props.Heroes[0].results[0])
     }
 
     render() {

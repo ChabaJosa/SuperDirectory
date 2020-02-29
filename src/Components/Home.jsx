@@ -15,7 +15,7 @@ class Home extends Component {
 
 
     render() {
-        console.log("Home Component", this.state)
+        // console.log("Home Component", this.state)
 
         return (
             <React.Fragment>

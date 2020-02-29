@@ -30,6 +30,7 @@ const Heroes = (props) => {
             SetHeroes([...Heroes, result.data])
         })
             .catch(() => console.log("Can’t access " + SupsApiCall))
+            SetHeroes([])
        
     }, []);
 
@@ -46,7 +47,8 @@ const Heroes = (props) => {
 
     }
     
-    if (Heroes[0] !== undefined && !Heroes[0].error){
+    if (Heroes[0] !== undefined && !Heroes[0].error && Heroes[0].results["length"] > 0){
+        console.log("Passed Heroes[0].results[length]", Heroes[0].results["length"])
         return (
             <React.Fragment>
                 <CurrentHero Heroes={Heroes} MarvelHeroes = {MarvelHeroes} Comics={Comics} {...props}/>
