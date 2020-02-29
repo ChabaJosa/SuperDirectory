@@ -56,19 +56,19 @@ class currentHero extends Component {
     }
 
     getProperHero = () => {
-        let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name.toLowerCase() === this.props.match.params.Name.toLowerCase() && eachHero.name.length === this.props.match.params.Name.length })
-        console.log("Proper Hero ", properHero)
-        this.props.Heroes[0].results = properHero 
-        console.log("Proper Hero ", this.props.Heroes[0].results[0])
+        if(this.props.Heroes[0].results){
+            let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name.toLowerCase() === this.props.match.params.Name.toLowerCase()})
+            console.log("Proper Hero ", properHero)
+            this.props.Heroes[0].results = properHero 
+        }
+        // console.log("Proper Hero ", this.props.Heroes[0].results[0])
     }
 
     render() {
         return (
-
             <div>
-                {this.props.Heroes[0] &&
+                {this.props.Heroes[0] && this.props.Heroes[0].results[0] !== undefined &&
                     <React.Fragment>
-                        {/* <div>{this.props.MarvelHeroes[0].results[0].name}</div> */}
                         {this.getProperHero()}
                         {console.log("Logging this.props.MarvelHeroes", this.props.MarvelHeroes)}
                         <div id="content-wrapper" className="d-flex flex-column">
@@ -297,9 +297,9 @@ class currentHero extends Component {
                                 {/* /.container-fluid */}
                             </div>
                             {/* End of Main Content */}
-                        </div></React.Fragment>}
-                            {/* This used to be above the React Fragment */}
-                            <Player {...this.props} />   
+                        </div>
+                    </React.Fragment>}
+                    <Player {...this.props} />
             </div>
         );
     }
