@@ -35,8 +35,7 @@ class App extends Component {
       <React.Fragment>
         <MetaTags>
           <title>
-            EngagementML - Optimizing your Social Media Strategy with Machine
-            Learning
+          Super-Directory - Marvel Search Directory
           </title>
           <meta
             property="og:url"
