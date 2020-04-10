@@ -4,6 +4,7 @@ import './App.css';
 import Heroes from './Components/Heroes/Heroes';
 import Home from "./Components/Home"
 import { Switch, Route } from 'react-router-dom';
+import MetaTags from "react-meta-tags";
 
 class App extends Component {
 
@@ -29,6 +30,47 @@ class App extends Component {
 
   render() {
     return (
+      <React.Fragment>
+
+      <React.Fragment>
+        <MetaTags>
+          <title>
+            EngagementML - Optimizing your Social Media Strategy with Machine
+            Learning
+          </title>
+          <meta
+            property="og:url"
+            content="https://super-directory.netlify.com"
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:title"
+            content="Super-Directory - Marvel Search Directory"
+          />
+          <meta
+            property="og:description"
+            content="A superhero search directory for Marvel Fans!"
+          />
+          <meta property="og:image" content="../src/cardBackground.jpg" />
+
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta
+            name="twitter:site"
+            content="https://super-directory.netlify.com"
+          />
+          <meta name="twitter:creator" content="Chaba Josa" />
+          <meta
+            name="twitter:title"
+            content="Super-Directory - Marvel Search Directory"
+          />
+          <meta
+            name="twitter:description"
+            content="A superhero search directory for Marvel Fans!"
+          />
+          <meta name="twitter:image" content="../src/cardBackground.jpg" />
+        </MetaTags>
+      </React.Fragment>
+
       <div className="App">
         <Switch>
           <Route exact path="/Heroes/:Name" 
@@ -38,6 +80,8 @@ class App extends Component {
         </Switch>
 
       </div>
+
+      </React.Fragment>
     );
   }
 
