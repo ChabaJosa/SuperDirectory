@@ -25,9 +25,9 @@
 
 
 .supsError{
-  position: absolute;
-  top:40%;
-  right:35%
+  position: relative;
+  top:30vh;
+  margin:0 5vw 0 5vw
 }
 
 .form-control-bs{

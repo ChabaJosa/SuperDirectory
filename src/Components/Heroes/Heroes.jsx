@@ -59,14 +59,16 @@ const Heroes = (props) => {
     } else if(Heroes[0] !== undefined && Heroes[0].error){
         return (
         <React.Fragment>
-            <div className="supsError">
-                <h4 className="HomeText" style={{color:"white"}}><i>{Heroes[0].error}</i></h4>
-                <h1 className="HomeText" style={{color:"white"}}>Check your super spelling... 😁 </h1>
-                <p>We are using external databases including Marvel's, so if they have Spider-Man instead of Spiderman or IronMan 
-                    instead of Iron-man, we must play by their rules. 
-                </p>
-                <br></br>
-                <Link to="/"><button className="btn btn-danger" style={{color:"white"}}>Home</button></Link>
+            <div className="supsError d-flex justify-content-center">
+                <div className="d-flex flex-column">
+                    <h4 className="HomeText" style={{color:"white"}}><i>{Heroes[0].error}</i></h4>
+                    <h1 className="HomeText" style={{color:"white"}}>Check your super spelling...😁 </h1>
+                    <p className="HomeText" style={{color:"white"}}>We are using external databases including Marvel's, so if they have Spider-Man instead of Spiderman or IronMan 
+                        instead of Iron-man, we must play by their rules. 
+                    </p>
+                    <br></br>
+                    <Link to="/"><button className="btn btn-danger" style={{color:"white"}}>Home</button></Link>
+                </div>
             </div>
         </React.Fragment>
         )
