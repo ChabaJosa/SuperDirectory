@@ -38,9 +38,17 @@ class Home extends Component {
                  
                 if (filteredResults.length > 3){
                     const picked3 = [filteredResults[randomNumber(0,this.state.coolHeroesComics.length-1)],filteredResults[randomNumber(0,this.state.coolHeroesComics.length-1)],filteredResults[randomNumber(0,this.state.coolHeroesComics.length-1)]]
-                    this.setState({comics:picked3})
-                    console.log("Comics API Request Result", result.data.data)
-                    console.log(this.state)
+                    // Checking for duplicates
+                    if (filteredResults[0]!==filteredResults[1] && filteredResults[0]!==filteredResults[2]){
+                        this.setState({comics:picked3})
+                        console.log("Comics API Request Result", result.data.data)
+                        console.log(this.state)
+                    } else {
+                        const picked3 = [filteredResults[0],filteredResults[1],filteredResults[2]]
+                        this.setState({comics:picked3})
+                        console.log("Comics API Request Result", result.data.data)
+                        console.log(this.state)
+                    }
                 } else {
                     const picked3 = filteredResults
                     console.log("Here's the 3 you picked",picked3)
@@ -57,13 +65,9 @@ class Home extends Component {
     }
 
 
-    getAllTheComics = (comics) => { // The parameter should take --> this.props.Comics[0].results
-        let comicsWithImages = comics.filter(everyResult => {
-            return everyResult.thumbnail.path !== "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
-        })
-        console.log("These comics have images",comicsWithImages) //All Good Unitl here
+    getAllTheComics = (comics) => { 
         return (
-            comicsWithImages.map(everyComic => {
+            comics.map(everyComic => {
                 return (
                     <div className="card mb-3" style={{ width: "18rem", backgroundColor:"transparent" }}>
                         <div className="g-card">
