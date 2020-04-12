@@ -10,7 +10,7 @@ class Home extends Component {
         marvelPublic:"8fc6c25d7b8c17ab22e20964381a9452",
         marvelPrivate:"d6fa3e44c676e9fcc6339f0d4d84a31bf70e71d0",
         marvelTs:1,
-        coolHeroesComics:["Daredevil", "Moon Knight", "Thor", "Punisher", "Captain America", "Iron man", "Hulk","Wolverine","Thanos","Spider-Man"],
+        coolHeroesComics:["Daredevil", "Moon Knight", "Thor", "Punisher", "Captain America", "Iron man", "Hulk","Wolverine","Thanos","Spider-Man","Blade"],
         comics:[]
     }
     
@@ -32,13 +32,17 @@ class Home extends Component {
             // Filter Data here to find what actually has a thumbnail and a Descriptioni/Title
             axios.get(ComicApiCall).then( result => {
                 // Should get 3 random comics here 
-                if (result.data.data.results.length > 6){
-                    const picked3 = [result.data.data.results[randomNumber(0,this.state.coolHeroesComics.length-1)],result.data.data.results[randomNumber(0,this.state.coolHeroesComics.length-1)],result.data.data.results[randomNumber(0,this.state.coolHeroesComics.length-1)]]
+                let filteredResults = result.data.data.results.filter(everyResult => {
+                    return everyResult.thumbnail.path !== "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+                })
+                 
+                if (filteredResults.length > 3){
+                    const picked3 = [filteredResults[randomNumber(0,this.state.coolHeroesComics.length-1)],filteredResults[randomNumber(0,this.state.coolHeroesComics.length-1)],filteredResults[randomNumber(0,this.state.coolHeroesComics.length-1)]]
                     this.setState({comics:picked3})
                     console.log("Comics API Request Result", result.data.data)
                     console.log(this.state)
                 } else {
-                    const picked3 = [result.data.data.results[0],result.data.data.results[1],result.data.data.results[2]]
+                    const picked3 = filteredResults
                     console.log("Here's the 3 you picked",picked3)
                     this.setState({comics:picked3})
                     console.log("Comics API Request Result", result.data.data)
@@ -112,10 +116,10 @@ class Home extends Component {
                             <div className="bg-transparent p-5 rounded shadow">
 
                                 <form onSubmit={(e) => this.props.handleSubmit(this.state, e)}>
-                                    <div className="input-group mb-4">
-                                        <input onChange={this.addHeroeProperty} className="form-control-bs" name="heroeName" type="search" placeholder="Super Search  !" aria-describedby="button-addon5" />
+                                    <div className="d-flex mb-4">
+                                        <input onChange={this.addHeroeProperty} className="form-control-bs" name="heroeName" type="search" placeholder="Search for heroes !" aria-describedby="button-addon5" />
                                             <div className="input-group-append" onClick={() => this.props.history.push(`Heroes/${this.state.heroeName}`)}>
-                                                <button id="button-addon5" type="submit" className="btn">+</button>
+                                                <button  type="submit" className="btn btn-danger">+</button>
                                             </div>
                                     </div>
 

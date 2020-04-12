@@ -84,7 +84,7 @@ class currentHero extends Component {
                                         <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} id="currentHeroImage" />
                                         <div className="mb-1 d-flex flex-column justify-content-center align-items-center">
                                             <div>
-                                            <span className="m-5" id="currentHeroTitle" >{this.props.Heroes[0].results[0].name}</span>
+                                            <span className="m-5 hover-underline-animation" id="currentHeroTitle" >{this.props.Heroes[0].results[0].name}</span>
                                             <br></br>
                                             </div>
                                             {/* Topbar Search */}
@@ -108,7 +108,7 @@ class currentHero extends Component {
                                 {this.props.Heroes[0] && this.props.Heroes[0].results[0] && 
                                 // {/* Begin Page Content */}
                                 // {/* Content Row */}
-                                
+
                                 <>
 
                                 <div className="row" style={{marginLeft:"0",marginRight:"0"}}>
