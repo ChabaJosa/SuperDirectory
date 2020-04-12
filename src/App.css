@@ -44,13 +44,17 @@
 input::placeholder { 
   color: white;
   opacity: 1; 
+  font-size:2rem;
 }
 
 #CurrentHeroForm {
-  position: fixed;
+  /* position: fixed;
   top:20px;
-  right:20px;
-  z-index: 1;
+  right:20px; */
+  /* font-size: ; */
+  /* z-index: 1; */
+  width:90vw;
+  margin:0
 }
 
 td {

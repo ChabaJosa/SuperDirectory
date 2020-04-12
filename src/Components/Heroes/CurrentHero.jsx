@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Player from "../YouTube/Player"
 
 class currentHero extends Component {
 
-    state = {}
+    state = {} 
 
     addHeroeProperty = (e) => {
 
@@ -57,7 +56,7 @@ class currentHero extends Component {
 
     getProperHero = () => {
         if(this.props.Heroes[0].results["length"]>1){
-            let properHero = this.props.Heroes[0].results.filter(eachHero => {return  eachHero.name.toLowerCase() === this.props.match.params.Name.toLowerCase()})
+            let properHero = this.props.Heroes[0].results.filter(eachHero => {return eachHero.name.toLowerCase() === this.props.match.params.Name.toLowerCase()})
             if(properHero["length"]!==0){
                 console.log("Proper Hero ", properHero)
                 this.props.Heroes[0].results = properHero 
@@ -76,132 +75,55 @@ class currentHero extends Component {
                             {/* Main Content */}
                             <div id="content">
                                 {/* Topbar */}
-                                <nav className="navbar navbar-default navbar-static-top d-flex justify-content-center">
+                                <div className="">
                                     {/* Topbar Navbar */}
-                                    <ul className="navbar-nav m-2">
-                                        {/* Nav Item - User Information */}
-                                        <li className="nav-item dropdown no-arrow">
-
-                                            <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="560vh" />
+                                    {/* Nav Item - User Information */}
+                                    <div>
+                                        <br></br>
+                                        <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="550vh" />
+                                        <div className="mb-1 d-flex flex-column justify-content-center align-items-center">
+                                            <div>
                                             <span className="ml-5 display-1" style={{ color: "white" }}>{this.props.Heroes[0].results[0].name}</span>
+                                            <br></br>
+                                            </div>
+                                            {/* Topbar Search */}
+                                            <div className="mt-1">
+                                                <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
+                                                    {/* <div className="input-group"> */}
+                                                    <div className="">
+                                                        <input onChange={this.addHeroeProperty} className="form-control-bs mt-5 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
+                                                        <div className="input-group-append">
+                                                            <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload() }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white", border:0 }} >+</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br></br>
 
-                                        </li>
-                                    </ul>
-                                    {/* Topbar Search */}
-                                    {/* <form className="d-none d-sm-inline-block form-inline mr-right ml-md-3 my-2 my-md-0 mw-100 navbar-search"> */}
-                                    <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
+                                    
+                                    
+                                    {/* <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
                                         <div className="input-group">
                                             <input onChange={this.addHeroeProperty} className="form-control-bs ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
                                             <div className="input-group-append">
                                                 <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload() }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white", border:0 }} >+</button>
                                             </div>
-
                                         </div>
-                                    </form>
-                                </nav>
+                                    </form> */}
+                                </div>
                                 {/* End of Topbar */}
 
-
-                                {/* Begin Page Content */}
-                                <div className="container-fluid">
-
-                                    {this.props.MarvelHeroes[0] && this.props.MarvelHeroes[0].results[0] && this.props.Comics[0] && this.props.Comics[0].results[0] &&
-
-                                        <React.Fragment>
-                                            {/* Comic Images */}
-                                            {console.log("Logging this.props.Comics", this.props.Comics)}
-                                            <div className="row d-flex m-4 justify-content-around">
-
-                                                {this.getAllTheComics(this.props.Comics[0].results)}
+                                {this.props.Heroes[0] && this.props.Heroes[0].results[0] && 
 
 
-                                            </div>
+                                // {/* Begin Page Content */}
 
+                                // {/* Content Row */}
 
-                                            {/* Content Row */}
-                                            <div className="row mx-auto d-flex justify-content-center">
-                                                <div className="card shadow mb-4">
-                                                    <div className="card-header py-3">
-                                                        <h6 className="m-0 font-weight-bold text-primary">DESCRIPTION</h6>
-                                                    </div>
-                                                    <div className="card-body">
-                                                        <p className="mb-0" style={{fontFamily:"monospace", fontSize:"Large"}}>{this.props.MarvelHeroes[0].results[0].description}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            {/* Content Row */}
-                                            <div className="row">
-                                                {/* Comics */}
-                                                <div className="col-xl-3 col-md-6 mb-4">
-                                                    <div className="card border-left-primary shadow h-100 py-2">
-                                                        <div className="card-body">
-                                                            <div className="row no-gutters align-items-center">
-                                                                <div className="col mr-2">
-                                                                    <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Comics</div>
-                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].comics.available}</div>
-                                                                </div>
-                                                                <div className="col-auto">
-                                                                    <i className="fas fa-calendar fa-2x text-gray-300" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {/* Stories */}
-                                                <div className="col-xl-3 col-md-6 mb-4">
-                                                    <div className="card border-left-success shadow h-100 py-2">
-                                                        <div className="card-body">
-                                                            <div className="row no-gutters align-items-center">
-                                                                <div className="col mr-2">
-                                                                    <div className="text-xs font-weight-bold text-success text-uppercase mb-1">Stories</div>
-                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].stories.available}</div>
-                                                                </div>
-                                                                <div className="col-auto">
-                                                                    <i className="fas fa-dollar-sign fa-2x text-gray-300" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {/* Series*/}
-                                                <div className="col-xl-3 col-md-6 mb-4">
-                                                    <div className="card border-left-warning shadow h-100 py-2">
-                                                        <div className="card-body">
-                                                            <div className="row no-gutters align-items-center">
-                                                                <div className="col mr-2">
-                                                                    <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Series</div>
-                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].series.available}</div>
-                                                                </div>
-                                                                <div className="col-auto">
-                                                                    <i className="fas fa-comments fa-2x text-gray-300" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                {/* Events*/}
-                                                <div className="col-xl-3 col-md-6 mb-4">
-                                                    <div className="card border-left-warning shadow h-100 py-2">
-                                                        <div className="card-body">
-                                                            <div className="row no-gutters align-items-center">
-                                                                <div className="col mr-2">
-                                                                    <div className="text-xs font-weight-bold text-danger text-uppercase mb-1">Sagas</div>
-                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].events.available}</div>
-                                                                </div>
-                                                                <div className="col-auto">
-                                                                    <i className="fas fa-comments fa-2x text-gray-300" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </React.Fragment>
-                                    }
-
-                                    {/* Content Row */}
-                                    <div className="row">
+                                <>
+                                <div className="row">
                                         {/* Content Column */}
                                         <div className="col-lg-6 mb-4">
                                             {/* Project Card Example */}
@@ -294,13 +216,120 @@ class currentHero extends Component {
                                         </div>
                                     </div>
 
+                                </>
+
+                                }                    
+
+                                {/* Starting all comics */}
+
+                                <div className="container-fluid">
+                                    {this.props.MarvelHeroes[0] && this.props.MarvelHeroes[0].results[0] && this.props.Comics[0] && this.props.Comics[0].results[0] &&
+
+                                        <React.Fragment>
+                                                {/* Content Row */}
+                                                <div className="row mx-auto d-flex justify-content-center">
+                                                <div className="card shadow mb-4">
+                                                    <div className="card-header py-3">
+                                                        <h6 className="m-0 font-weight-bold text-primary">DESCRIPTION</h6>
+                                                    </div>
+                                                    <div className="card-body">
+                                                        <p className="mb-0" style={{fontFamily:"monospace", fontSize:"Large"}}>{this.props.MarvelHeroes[0].results[0].description}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                             {/* Content Row */}
+                                            <div className="row">
+                                                {/* Comics */}
+                                                <div className="col-xl-3 col-md-6 mb-4">
+                                                    <div className="card border-left-primary shadow h-100 py-2">
+                                                        <div className="card-body">
+                                                            <div className="row no-gutters align-items-center">
+                                                                <div className="col mr-2">
+                                                                    <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">Comics</div>
+                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].comics.available}</div>
+                                                                </div>
+                                                                <div className="col-auto">
+                                                                    <i className="fas fa-calendar fa-2x text-gray-300" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/* Stories */}
+                                                <div className="col-xl-3 col-md-6 mb-4">
+                                                    <div className="card border-left-success shadow h-100 py-2">
+                                                        <div className="card-body">
+                                                            <div className="row no-gutters align-items-center">
+                                                                <div className="col mr-2">
+                                                                    <div className="text-xs font-weight-bold text-success text-uppercase mb-1">Stories</div>
+                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].stories.available}</div>
+                                                                </div>
+                                                                <div className="col-auto">
+                                                                    <i className="fas fa-dollar-sign fa-2x text-gray-300" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/* Series*/}
+                                                <div className="col-xl-3 col-md-6 mb-4">
+                                                    <div className="card border-left-warning shadow h-100 py-2">
+                                                        <div className="card-body">
+                                                            <div className="row no-gutters align-items-center">
+                                                                <div className="col mr-2">
+                                                                    <div className="text-xs font-weight-bold text-warning text-uppercase mb-1">Series</div>
+                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].series.available}</div>
+                                                                </div>
+                                                                <div className="col-auto">
+                                                                    <i className="fas fa-comments fa-2x text-gray-300" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {/* Events*/}
+                                                <div className="col-xl-3 col-md-6 mb-4">
+                                                    <div className="card border-left-warning shadow h-100 py-2">
+                                                        <div className="card-body">
+                                                            <div className="row no-gutters align-items-center">
+                                                                <div className="col mr-2">
+                                                                    <div className="text-xs font-weight-bold text-danger text-uppercase mb-1">Sagas</div>
+                                                                    <div className="h5 mb-0 font-weight-bold text-gray-800">{this.props.MarvelHeroes[0].results[0].events.available}</div>
+                                                                </div>
+                                                                <div className="col-auto">
+                                                                    <i className="fas fa-comments fa-2x text-gray-300" />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </React.Fragment>
+
+                                            }
+
+                                            
+                                            <br></br>            
+                                            <Player {...this.props} />
+                                            <br></br>
+
+                                            {this.props.MarvelHeroes[0] && this.props.MarvelHeroes[0].results[0] && this.props.Comics[0] && this.props.Comics[0].results[0] &&
+                                            
+                                            // {/* Comic Images */}
+                                            // {console.log("Logging this.props.Comics", this.props.Comics)}
+                                            <div className="row d-flex m-4 justify-content-around">
+                                                {this.getAllTheComics(this.props.Comics[0].results)}
+                                            </div>
+                                    }
+
                                 </div>
                                 {/* /.container-fluid */}
                             </div>
                             {/* End of Main Content */}
                         </div>
                     </React.Fragment>}
-                    <Player {...this.props} />
+                    {/* <Player {...this.props} /> */}
             </div>
         );
     }
