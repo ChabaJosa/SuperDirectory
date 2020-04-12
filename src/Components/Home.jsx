@@ -38,7 +38,7 @@ class Home extends Component {
 
                                 <form onSubmit={(e) => this.props.handleSubmit(this.state, e)}>
                                     <div className="input-group mb-4">
-                                        <input onChange={this.addHeroeProperty} className="form-control-bs" name="heroeName" type="search" placeholder="Cape Crusaders, Web Crawlers we got them all..." aria-describedby="button-addon5" />
+                                        <input onChange={this.addHeroeProperty} className="form-control-bs" name="heroeName" type="search" placeholder="Cape Crusaders, Web Crawlers... we got them all!." aria-describedby="button-addon5" />
                                             <div className="input-group-append" onClick={() => this.props.history.push(`Heroes/${this.state.heroeName}`)}>
                                                 <button id="button-addon5" type="submit" className="btn">+</button>
                                             </div>
