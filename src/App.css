@@ -71,6 +71,7 @@ input::placeholder {
   color: white;
   opacity: 1; 
   font-size:2vh;
+  font-style: italic;
 }
 
 #CurrentHeroForm {
