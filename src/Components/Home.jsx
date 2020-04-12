@@ -24,16 +24,16 @@ class Home extends Component {
 
                     <div className="row py-5">
                         <div className="col-lg-9 mx-auto text-white text-center HomeText">
-                            <h1 className="display-1" >Super Directory</h1>
+                            <h1 className="display-1 hover-underline-animation" >Super Directory</h1>
                             <br></br>
-                            <h3>Collection of Superhero Data</h3>
+                            <h3 className="hover-underline-animation">Collection of Superhero Data</h3>
                         </div>
                     </div>
 
 
                     <div className="row mb-5">
                         <div className="col-lg-8 mx-auto">
-                            <h5 className="font-weight-light mb-4 font-italic text-white HomeText">Remember to type correctly !</h5>
+                            <h5 className="font-weight-light mb-4 font-italic text-white HomeText hover-underline-animation">Remember to type correctly !</h5>
                             <div className="bg-transparent p-5 rounded shadow">
 
                                 <form onSubmit={(e) => this.props.handleSubmit(this.state, e)}>
