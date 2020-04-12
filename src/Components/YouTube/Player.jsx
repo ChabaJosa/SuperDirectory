@@ -33,7 +33,9 @@ class Player extends Component {
             return (
                 <MDBCarouselItem itemId={i+1}>
                     <MDBView>
-                        <iframe title={eachItem.snippet.title} id="ytplayer" type="text" width="640" height="360" src={`https://www.youtube.com/embed/${eachItem.id.videoId}`} frameBorder="0"></iframe>
+                        <div className="embed-responsive embed-responsive-16by9">
+                            <iframe title={eachItem.snippet.title} className="embed-responsive-item" id="ytplayer" type="text" src={`https://www.youtube.com/embed/${eachItem.id.videoId}`} frameBorder="0"></iframe>
+                        </div>
                     </MDBView>
                 </MDBCarouselItem>
             )

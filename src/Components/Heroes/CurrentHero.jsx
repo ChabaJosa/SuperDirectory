@@ -66,7 +66,7 @@ class currentHero extends Component {
 
     render() {
         return (
-            <div>
+            <div className="">
                 {this.props.Heroes[0] && this.props.Heroes[0].results[0] !== undefined &&
                     <React.Fragment>
                         {this.getProperHero()}
@@ -75,15 +75,16 @@ class currentHero extends Component {
                             {/* Main Content */}
                             <div id="content">
                                 {/* Topbar */}
-                                <div className="">
+                                <div className="container">
                                     {/* Topbar Navbar */}
                                     {/* Nav Item - User Information */}
                                     <div>
                                         <br></br>
-                                        <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="550vh" />
+                                        {/* <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} height="550vh" /> */}
+                                        <img className="img-profile rounded-circle" src={`${this.props.Heroes[0].results[0].image.url}`} id="currentHeroImage" />
                                         <div className="mb-1 d-flex flex-column justify-content-center align-items-center">
                                             <div>
-                                            <span className="ml-5 display-1" style={{ color: "white" }}>{this.props.Heroes[0].results[0].name}</span>
+                                            <span className="m-5" id="currentHeroTitle" >{this.props.Heroes[0].results[0].name}</span>
                                             <br></br>
                                             </div>
                                             {/* Topbar Search */}
@@ -101,37 +102,24 @@ class currentHero extends Component {
                                         </div>
                                     </div>
                                     <br></br>
-
-                                    
-                                    
-                                    {/* <form id="CurrentHeroForm" onSubmit={(e) => e.preventDefault()}>
-                                        <div className="input-group">
-                                            <input onChange={this.addHeroeProperty} className="form-control-bs ml-3 w-75" name="heroeName" style={{ background: "transparent" }} type="search" placeholder="Next sup..." aria-label="Search" aria-describedby="basic-addon2" />
-                                            <div className="input-group-append">
-                                                <button onClick={() => { this.props.history.push(this.state.heroeName); window.location.reload() }} className="btn btn-light" type="submit" style={{ background: "transparent", color: "white", border:0 }} >+</button>
-                                            </div>
-                                        </div>
-                                    </form> */}
                                 </div>
                                 {/* End of Topbar */}
 
                                 {this.props.Heroes[0] && this.props.Heroes[0].results[0] && 
-
-
                                 // {/* Begin Page Content */}
-
                                 // {/* Content Row */}
-
+                                
                                 <>
-                                <div className="row">
+
+                                <div className="row" style={{marginLeft:"0",marginRight:"0"}}>
                                         {/* Content Column */}
-                                        <div className="col-lg-6 mb-4">
+                                        <div className="col-lg-6">
                                             {/* Project Card Example */}
                                             <div className="card shadow mb-4">
                                                 <div className="card-header py-3">
                                                     <h6 className="m-0 font-weight-bold text-primary">POWERSTATS</h6>
                                                 </div>
-                                                <div className="card-body">
+                                                <div className="card-body" style={{textAlign:"left"}}>
                                                     <h4 className="small font-weight-bold">Intelligence <span className="float-right">{this.props.Heroes[0].results[0].powerstats.intelligence}</span></h4>
                                                     <div className="progress mb-4">
                                                         <div className="progress-bar bg-danger" role="progressbar" style={{ width: `${this.props.Heroes[0].results[0].powerstats.intelligence}%` }} aria-valuenow={this.props.Heroes[0].results[0].powerstats.intelligence} aria-valuemin={0} aria-valuemax={100} />
@@ -161,7 +149,7 @@ class currentHero extends Component {
 
 
                                         </div>
-                                        <div className="col-lg-6 mb-4">
+                                        <div className="col-lg-6">
                                             {/* Bio */}
                                             <div className="card shadow mb-4">
                                                 <div className="card-header py-3">
