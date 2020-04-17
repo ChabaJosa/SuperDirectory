@@ -101,7 +101,11 @@ class Home extends Component {
         // console.log("Home Component", this.state)
         if (this.state.comics.length > 0){
         return (
-            <React.Fragment>
+            <React.Fragment >
+                <div style={{}}>
+                    {/* <div id="cf4a">
+                        <img src={'https://paperpull.com/wp-content/uploads/2018/12/cool-comic-wallpaper-of-superman-680x425.jpg'} className="superBackground"/>
+                    </div> */}
 
                 <div className="container" style={{position:"relative", top:"10vh"}}>
 
@@ -150,6 +154,7 @@ class Home extends Component {
                     }
                 </div>
 
+                </div>
             </React.Fragment>
            
         );
